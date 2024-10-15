@@ -7,4 +7,13 @@ class Menu < ApplicationRecord
   validates :identifier, presence: true, uniqueness: true
   validates :label, presence: true
   validates :end_date, comparison: { greater_than: :start_date }, if: -> { end_date.present? && start_date.present? }
+
+  def ordered_sections
+    Section
+      .joins(:menu_sections)
+      .where(menu_sections: { menu_id: id })
+      .select('sections.*, menu_sections.display_order')
+      .order('menu_sections.display_order, sections.id')
+      .distinct
+  end
 end

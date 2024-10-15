@@ -7,4 +7,6 @@ class Modifier < ApplicationRecord
   validates :default_quantity, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :display_order, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :price_override, numericality: { greater_than_or_equal_to: 0 }, allow_nil: true
+
+  default_scope { order(:display_order) }
 end
