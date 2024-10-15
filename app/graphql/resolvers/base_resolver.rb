@@ -2,6 +2,5 @@
 
 module Resolvers
   class BaseResolver < GraphQL::Schema::Resolver
-    include ExceptionHandler
   end
 end

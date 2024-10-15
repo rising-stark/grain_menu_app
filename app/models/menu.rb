@@ -1,5 +1,5 @@
 class Menu < ApplicationRecord
-  has_many :menu_sections
+  has_many :menu_sections, dependent: :destroy
   has_many :sections, through: :menu_sections
 
   enum state: { menu_active: 'active', menu_inactive: 'inactive', menu_archived: 'archived', menu_pending: 'pending' }

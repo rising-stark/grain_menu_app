@@ -1,10 +1,7 @@
 # frozen_string_literal: true
 
 class GraphqlController < ApplicationController
-  # If accessing from outside this domain, nullify the session
-  # This allows for outside API access while preventing CSRF attacks,
-  # but you'll have to authenticate your user separately
-  # protect_from_forgery with: :null_session
+  include ExceptionHandler
 
   def execute
     variables = prepare_variables(params[:variables])
@@ -16,9 +13,12 @@ class GraphqlController < ApplicationController
     }
     result = MenuAppSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
     render json: result
-  rescue StandardError => e
-    raise e unless Rails.env.development?
-    handle_error_in_development(e)
+    rescue StandardError => e
+      if Rails.env.production?
+        handle_error(e)
+      else
+        handle_error_in_development(e)
+      end
   end
 
   private
@@ -41,12 +41,5 @@ class GraphqlController < ApplicationController
     else
       raise ArgumentError, "Unexpected parameter: #{variables_param}"
     end
-  end
-
-  def handle_error_in_development(e)
-    logger.error e.message
-    logger.error e.backtrace.join("\n")
-
-    render json: { errors: [{ message: e.message, backtrace: e.backtrace }], data: {} }, status: 500
   end
 end

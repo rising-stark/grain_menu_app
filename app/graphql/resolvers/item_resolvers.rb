@@ -12,8 +12,6 @@ module Resolvers
 
       def resolve(identifier:)
         Item.find_by!(identifier: identifier)
-      rescue ActiveRecord::RecordNotFound => e
-        handle_error(e)
       end
     end
   end
