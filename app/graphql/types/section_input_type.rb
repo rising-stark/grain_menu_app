@@ -5,6 +5,6 @@ module Types
     argument :description, String, required: false
     argument :created_at, GraphQL::Types::ISO8601Date, required: false
     argument :updated_at, GraphQL::Types::ISO8601Date, required: false
-    # argument :items, [Types::ItemType], required: false
+    argument :items, [Types::ItemInputType], required: false
   end
 end

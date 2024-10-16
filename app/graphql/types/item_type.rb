@@ -7,7 +7,8 @@ module Types
     field :description, String, null: true
     field :created_at, GraphQL::Types::ISO8601Date, null: false
     field :updated_at, GraphQL::Types::ISO8601Date, null: false
-    # field :modifier_groups, [Types::ModifierGroupType], null: true
-    # field :modifiers, [Types::ModifierType], null: true
+    field :modifier_groups, [Types::ModifierGroupType], null: true
+    field :modifier, Types::ModifierType, null: true
+    field :section, Types::SectionType, null: true
   end
 end

@@ -6,6 +6,7 @@ module Types
     field :selection_required_max, Integer, null: true
     field :created_at, GraphQL::Types::ISO8601Date, null: false
     field :updated_at, GraphQL::Types::ISO8601Date, null: false
-    # field :modifiers, [Types::ModifierType], null: true
+    field :modifiers, [Types::ModifierType], null: true
+    field :item, Types::ItemType, null: true
   end
 end
