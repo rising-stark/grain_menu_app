@@ -19,7 +19,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_14_210931) do
     t.bigint "modifier_group_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["item_id", "modifier_group_id"], name: "index_item_modifier_groups_on_item_id_and_modifier_group_id", unique: true
     t.index ["item_id"], name: "index_item_modifier_groups_on_item_id"
     t.index ["modifier_group_id"], name: "index_item_modifier_groups_on_modifier_group_id"
   end
@@ -42,7 +41,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_14_210931) do
     t.integer "display_order", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["menu_id", "section_id"], name: "index_menu_sections_on_menu_id_and_section_id", unique: true
     t.index ["menu_id"], name: "index_menu_sections_on_menu_id"
     t.index ["section_id"], name: "index_menu_sections_on_section_id"
   end
@@ -61,7 +59,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_14_210931) do
   create_table "modifier_groups", force: :cascade do |t|
     t.string "identifier", null: false
     t.string "label", null: false
-    t.integer "selection_required_min", default: 0, null: false
+    t.integer "selection_required_min", default: 0
     t.integer "selection_required_max"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -76,7 +74,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_14_210931) do
     t.float "price_override"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["item_id", "modifier_group_id"], name: "index_modifiers_on_item_id_and_modifier_group_id", unique: true
     t.index ["item_id"], name: "index_modifiers_on_item_id"
     t.index ["modifier_group_id"], name: "index_modifiers_on_modifier_group_id"
   end
@@ -88,7 +85,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_14_210931) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_section_items_on_item_id"
-    t.index ["section_id", "item_id"], name: "index_section_items_on_section_id_and_item_id", unique: true
     t.index ["section_id"], name: "index_section_items_on_section_id"
   end
 

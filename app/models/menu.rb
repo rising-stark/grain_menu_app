@@ -9,11 +9,6 @@ class Menu < ApplicationRecord
   validates :end_date, comparison: { greater_than: :start_date }, if: -> { end_date.present? && start_date.present? }
 
   def ordered_sections
-    Section
-      .joins(:menu_sections)
-      .where(menu_sections: { menu_id: id })
-      .select('sections.*, menu_sections.display_order')
-      .order('menu_sections.display_order, sections.id')
-      .distinct
+    sections.joins(:menu_section).order('menu_sections.display_order ASC')
   end
 end

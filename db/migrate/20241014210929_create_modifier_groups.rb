@@ -3,7 +3,7 @@ class CreateModifierGroups < ActiveRecord::Migration[6.0]
     create_table :modifier_groups do |t|
       t.string :identifier, null: false
       t.string :label, null: false
-      t.integer :selection_required_min, default: 0, null: false
+      t.integer :selection_required_min, default: 0, null: true
       t.integer :selection_required_max, null: true
 
       t.timestamps
