@@ -16,8 +16,8 @@ module Types
     field :update_modifier_group, mutation: Mutations::ModifierGroupMutations::UpdateModifierGroup
     field :delete_modifier_group, mutation: Mutations::ModifierGroupMutations::DestroyModifierGroup
 
-    # field :create_modifier, mutation: Mutations::ModifierMutations::CreateModifier
-    # field :update_modifier, mutation: Mutations::ModifierMutations::UpdateModifier
-    # field :delete_modifier, mutation: Mutations::ModifierMutations::DestroyModifier
+    field :create_modifier, mutation: Mutations::ModifierMutations::CreateModifier
+    field :update_modifier, mutation: Mutations::ModifierMutations::UpdateModifier
+    field :delete_modifier, mutation: Mutations::ModifierMutations::DestroyModifier
   end
 end
