@@ -37,6 +37,23 @@
 5. **Access the application:**
    Open your web browser and go to `http://localhost:3000`.
 
+6. Below are some of the metrics that we can use to measure the application performance:
+   1. **Response Time**
+   - We can measure average it takes for the application to respond to user requests. Tracking the 95th/99th percentile helps identify performance outliers that could affect user experience. We can use NewRelic for this purpose.
+
+   2. **Throughput**
+   - We can also track the load on each server with Queries per second (QPS), indicating the volume of requests handled by the application, reflecting its capacity to manage user load.
+
+   3. **Error Rate**
+   - We can monitor total errors which can be further classified into regression erros and new errors or with tags for different domains/services. It will help in providing insights into the reliability and stability of the application. We can use tools like DataDog to monitor the errors and get reports or several other tools like Airbrake, Sentry for mailing pruposes.
+
+   4. **CPU and Memory Usage**
+   - We can create alerts using when the CPU or memory usage reaches a critical value depending on each business' requirements like 90% usage. This can help us prevent failures.
+
+   5. **Database Performance**
+   - Similary we can have a track of slowest db queries for channeling the optimization efforts to enhance database efficiency.
+
+
 ## Sample GraphQL Requests
 
 ### Query Requests
@@ -335,6 +352,3 @@ mutation {
   }
 }
 ```
-
-## Pending
-1. **Update/create nested obejcts**: Allow creating/updating nested obejcts.
