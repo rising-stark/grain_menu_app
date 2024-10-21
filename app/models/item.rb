@@ -12,4 +12,18 @@ class Item < ApplicationRecord
   validates :label, presence: true
   validates :price, numericality: { greater_than_or_equal_to: 0 }
   validates :type, inclusion: { in: types.keys }
+
+  validate :prevent_update_if_locked, on: :update
+
+  def locked?
+    locked || section&.locked
+  end
+  
+  private
+
+  def prevent_update_if_locked
+    if locked_was || section&.locked_was
+      errors.add(:base, "This item is locked and cannot be updated.")
+    end
+  end
 end

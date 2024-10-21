@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_10_14_210931) do
+ActiveRecord::Schema[7.1].define(version: 2024_10_21_081502) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -31,6 +31,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_14_210931) do
     t.string "type", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "locked", default: false, null: false
     t.index ["identifier"], name: "index_items_on_identifier", unique: true
     t.index ["type"], name: "index_items_on_type"
   end
@@ -94,6 +95,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_14_210931) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "locked", default: false, null: false
     t.index ["identifier"], name: "index_sections_on_identifier", unique: true
   end
 
